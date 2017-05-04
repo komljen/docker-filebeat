@@ -1,6 +1,6 @@
 ## Filebeat kube ready image
 
-To overwrite filebeat.yml file with Kuberntes ConfigMap (filebeat-config.yaml), create resource first:
+To overwrite ```filebeat.yml``` which is a part of the ```komljen/filebeat``` docker image with Kuberntes ConfigMap (filebeat-config.yaml), create the resource first:
 
 ```
 kubectl create -f filebeat-config.yaml --namespace=default
