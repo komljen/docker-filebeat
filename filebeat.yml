@@ -15,8 +15,8 @@ filebeat.prospectors:
     document_type: kube-logs
 
 output.logstash:
-  hosts: ${LOGSTASH_HOSTS}
-  index: ${INDEX_PREFIX}
+  hosts: ["${LOGSTASH_HOSTS}"]
+  index: "${INDEX_PREFIX}"
   timeout: 15
 
 logging.level: ${LOG_LEVEL}
