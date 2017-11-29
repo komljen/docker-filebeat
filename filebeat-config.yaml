@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -21,7 +22,7 @@ data:
 
     output.logstash:
         hosts: ${LOGSTASH_HOSTS}
+        index: ${INDEX_PREFIX}
         timeout: 15
 
     logging.level: ${LOG_LEVEL}
-
