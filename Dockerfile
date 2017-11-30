@@ -18,4 +18,4 @@ RUN \
 COPY filebeat.yml /etc/filebeat/filebeat.yml
 COPY docker_app.yml /etc/filebeat/conf.d/docker_app.yml
 
-CMD ["/usr/local/bin/filebeat", "-e", "-c", "/etc/filebeat/filebeat.yml"]
+CMD ["/usr/local/bin/filebeat", "-e", "-d *", "-c", "/etc/filebeat/filebeat.yml"]
