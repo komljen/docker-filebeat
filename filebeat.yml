@@ -16,3 +16,4 @@ filebeat.config.prospectors:
 logging.files:
   path: "/var/log/filebeat"
 logging.level: ${LOG_LEVEL}
+setup.kibana.host: "${LOGSTASH_HOSTS}"
