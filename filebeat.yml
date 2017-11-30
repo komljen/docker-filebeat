@@ -10,7 +10,6 @@ output:
     pipelining: 0
     save_topology: false
 filebeat.registry_file: /var/log/containers/filebeat_registry
-filebeat.config_dir: "/etc/filebeat/conf.d"
 filebeat.config.prospectors:
   enabled: true
   path: /etc/filebeat/conf.d/*.yml
