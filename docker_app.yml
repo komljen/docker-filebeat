@@ -1,20 +1,18 @@
 ---
-filebeat:
-  prospectors:
-    - type: log
-      paths:
-        - "/var/log/containers/*.log"
-      exclude_files: ['filebeat.*log', 'kube.*log']
-      symlinks: true
-      json.message_key: log
-      json.keys_under_root: true
-      json.add_error_key: true
-      multiline.pattern: '^\s'
-      multiline.match: after
-      document_type: kube-logs
-      tag:
-        - docker_app
-      fields:
-        type: system_logs
-        index_suffix: docker_app
-      enabled: true
+- type: log
+  paths:
+    - "/var/log/containers/*.log"
+  exclude_files: ['filebeat.*log', 'kube.*log']
+  symlinks: true
+  json.message_key: log
+  json.keys_under_root: true
+  json.add_error_key: true
+  multiline.pattern: '^\s'
+  multiline.match: after
+  document_type: kube-logs
+  tag:
+    - docker_app
+  fields:
+    type: system_logs
+  index_suffix: docker_app
+  enabled: true
