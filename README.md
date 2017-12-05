@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: filebeat
-          image: maskeda/docker-filebeat:latest
+          image: maskeda/docker-filebeat
           resources:
             limits:
               cpu: 50m

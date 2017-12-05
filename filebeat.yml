@@ -12,8 +12,6 @@ filebeat.spool_size: 2048
 logging.files:
   path: "/etc/filebeat/log"
 logging.level: ${LOG_LEVEL}
-output.elasticsearch:
-  hosts: ["${LOGSTASH_HOSTS}"]
 output.logstash:
   enabled: true
   hosts: ["${LOGSTASH_HOSTS}"]
