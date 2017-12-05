@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: filebeat
-          image: maskeda/docker-filebeat
+          image: maskeda/docker-filebeat:latest
           resources:
             limits:
               cpu: 50m
@@ -40,9 +40,9 @@ spec:
             - name: LOGSTASH_HOSTS
               value: HOSTNAME:PORT
             - name: LOG_LEVEL
-              value: info
+              value: debug
             - name: INDEX_PREFIX
-              value: "%{[@metadata][INDEX_VALUE]}-%{+YYY.MM.dd}"
+              value: "INDEX_VALUE-%{[@metadata]}-%{+YYYY.MM.dd}"
           volumeMounts:
             - name: varlog
               mountPath: /var/log/containers
@@ -62,4 +62,5 @@ spec:
             path: /var/log/pods
         - name: varlibdockercontainers
           hostPath:
-            path: /var/lib/docker/containers```
+            path: /var/lib/docker/containers
+```

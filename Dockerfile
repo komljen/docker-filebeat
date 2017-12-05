@@ -14,7 +14,7 @@ RUN \
   mv filebeat-${FILEBEAT_VERSION}-linux-x86_64/filebeat /usr/local/bin && \
   mkdir -p /etc/filebeat/conf.d && \
   mkdir -p /etc/filebeat/modules.d && \
-  mkdir -p /var/log/filebeat && \
+  mkdir -p /etc/filebeat/log && \
   rm -rf /filebeat* && \
   rm -rf /var/lib/apt/lists/*
 

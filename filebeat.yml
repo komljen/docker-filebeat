@@ -10,7 +10,7 @@ filebeat.idle_timeout: 5s
 filebeat.registry_file: /var/log/containers/filebeat_registry
 filebeat.spool_size: 2048
 logging.files:
-  path: "/var/log/filebeat"
+  path: "/etc/filebeat/log"
 logging.level: ${LOG_LEVEL}
 output.elasticsearch:
   hosts: ["${LOGSTASH_HOSTS}"]
