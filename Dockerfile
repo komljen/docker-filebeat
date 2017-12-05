@@ -6,6 +6,7 @@ ENV FILEBEAT_BASE_URL https://artifacts.elastic.co/downloads/beats/filebeat/
 RUN \
   apt-get update && \
   apt-get -y install wget && \
+  apt-get -y install bash && \
   wget -q ${FILEBEAT_BASE_URL}filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz && \
   wget -q ${FILEBEAT_BASE_URL}filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz.sha512 && \
   sha512sum -c filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz.sha512 && \
