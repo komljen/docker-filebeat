@@ -1,15 +1,15 @@
 # filebeat 6.x kubernetes ready docker image
-Version: v0.0.2
+Version: v0.0.2a
 
 ## Modifying filebeat.yml
-In order to overwrite the values for ```filebeat.yml``` which is a part of the ```maskeda/filebeat``` docker image with the Kuberntes ConfigMap (filebeat-config.yaml), create the resource first:
+In order to overwrite the values for ```filebeat.yml``` which is a part of the ```maskeda/filebeat``` docker image with the Kuberntes ConfigMap (filebeat-config.yml), create the resource first:
 ```
-kubectl apply -f filebeat-config.yaml --namespace=default
+kubectl apply -f filebeat-config.yml --namespace=default
 ```
 
 Then create filebeat DaemonSet which will mount above config:
 ```
-kubectl apply -f filebeat-ds.yaml --namespace=default
+kubectl apply -f filebeat-ds.yml --namespace=default
 ```
 
 ## Sample filebeat-ds.yml
