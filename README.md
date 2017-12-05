@@ -1,5 +1,5 @@
 # filebeat 6.x kubernetes ready docker image
-Version: v0.0.1
+Version: v0.0.2
 
 ## Modifying filebeat.yml
 In order to overwrite the values for ```filebeat.yml``` which is a part of the ```maskeda/filebeat``` docker image with the Kuberntes ConfigMap (filebeat-config.yaml), create the resource first:
@@ -40,9 +40,9 @@ spec:
             - name: LOGSTASH_HOSTS
               value: HOSTNAME:PORT
             - name: LOG_LEVEL
-              value: info
+              value: debug
             - name: INDEX_PREFIX
-              value: "%{[@metadata][INDEX_VALUE]}-%{+YYY.MM.dd}"
+              value: "INDEX_VALUE-%{[@metadata]}-%{+YYYY.MM.dd}"
           volumeMounts:
             - name: varlog
               mountPath: /var/log/containers
@@ -62,4 +62,5 @@ spec:
             path: /var/log/pods
         - name: varlibdockercontainers
           hostPath:
-            path: /var/lib/docker/containers```
+            path: /var/lib/docker/containers
+```
