@@ -21,14 +21,12 @@ spec:
               memory: 50Mi
           env:
             - name: LOGSTASH_HOSTS
-              value: logstash:5000
+              value: HOSTNAME:PORT
             - name: LOG_LEVEL
-              value: info
+              value: debug
             - name: INDEX_PREFIX
-              value: prefix_value
+              value: "INDEX_VALUE-%{[@metadata]}-%{+YYYY.MM.dd}"
           volumeMounts:
-            - name: config
-              mountPath: /etc/filebeat
             - name: varlog
               mountPath: /var/log/containers
             - name: varlogpods
@@ -39,12 +37,6 @@ spec:
               readOnly: true
       terminationGracePeriodSeconds: 30
       volumes:
-        - name: config
-          configMap:
-            name: filebeat-config
-            items:
-              - key: filebeat.yml
-                path: filebeat.yml
         - name: varlog
           hostPath:
             path: /var/log/containers
