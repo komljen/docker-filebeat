@@ -2,7 +2,7 @@
 - type: log
   paths:
     - "/var/log/containers/*.log"
-    - "/var/log/pods/*"
+    - "/var/log/pods/**/*"
     - "/var/lib/docker/containers/*"
     - "/var/log/docker/containers/*.log"
     - "/var/log/messages"
