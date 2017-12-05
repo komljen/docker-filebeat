@@ -13,6 +13,8 @@ RUN \
   tar xzf filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz && \
   mv filebeat-${FILEBEAT_VERSION}-linux-x86_64/filebeat /usr/local/bin && \
   mkdir -p /etc/filebeat/conf.d && \
+  mkdir -p /etc/filebeat/modules.d && \
+  mkdir -p /var/log/filebeat && \
   rm -rf /filebeat* && \
   rm -rf /var/lib/apt/lists/*
 
