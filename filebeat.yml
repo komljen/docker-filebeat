@@ -1,19 +1,25 @@
 ---
 filebeat.prospectors: []
-filebeat.modules: []
-output:
-  logstash:
-    enabled: true
-    hosts: ["${LOGSTASH_HOSTS}"]
-    index: "${INDEX_PREFIX}"
-    loadbalance: true
-    pipelining: 0
-    save_topology: false
-filebeat.registry_file: /var/log/containers/filebeat_registry
+filebeat.modules:
+  path: /etc/filebeat/modules.d/*.yml
+  reload.enabled: false
 filebeat.config.prospectors:
   enabled: true
   path: /etc/filebeat/conf.d/*.yml
+filebeat.idle_timeout: 5s
+filebeat.registry_file: /var/log/containers/filebeat_registry
+filebeat.spool_size: 2048
 logging.files:
   path: "/var/log/filebeat"
 logging.level: ${LOG_LEVEL}
-setup.kibana.host: "${LOGSTASH_HOSTS}"
+output.elasticsearch:
+  hosts: ["${LOGSTASH_HOSTS}"]
+output.logstash:
+  enabled: true
+  hosts: ["${LOGSTASH_HOSTS}"]
+  index: "${INDEX_PREFIX}"
+  loadbalance: true
+  pipelining: 0
+  save_topology: false
+setup.kibana:
+    host: "${LOGSTASH_HOSTS}"
