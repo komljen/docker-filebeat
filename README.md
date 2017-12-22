@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: filebeat
-          image: komljen/docker-filebeat
+          image: komljen/filebeat
           resources:
             limits:
               cpu: 50m
