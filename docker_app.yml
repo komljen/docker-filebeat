@@ -1,0 +1,23 @@
+---
+- type: log
+  paths:
+    - "/var/log/containers/*.log"
+    - "/var/log/pods/**/*"
+    - "/var/lib/docker/containers/*"
+    - "/var/log/docker/containers/*.log"
+    - "/var/log/messages"
+  # exclude_files: ['filebeat.*log', 'kube.*log']
+  symlinks: true
+  json.message_key: log
+  json.keys_under_root: true
+  json.add_error_key: true
+  multiline.pattern: '^\s'
+  multiline.match: after
+  document_type: kube-logs
+  tail_files: true
+  tags: ["docker_app"]
+  fields:
+    type: system_logs
+    under_root: true
+  index_suffix: docker_app
+  enabled: true

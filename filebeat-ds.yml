@@ -1,20 +1,3 @@
-# filebeat 6.x kubernetes ready docker image
-Version: v0.0.2a
-
-## Modifying filebeat.yml
-In order to overwrite the values for ```filebeat.yml``` which is a part of the ```maskeda/filebeat``` docker image with the Kuberntes ConfigMap (filebeat-config.yml), create the resource first:
-```
-kubectl apply -f filebeat-config.yml --namespace=default
-```
-
-Then create filebeat DaemonSet which will mount above config:
-```
-kubectl apply -f filebeat-ds.yml --namespace=default
-```
-
-## Sample filebeat-ds.yml
-Please replace ```HOSTNAME:PORT``` with the desired hostname/port number and ```INDEX_VALUE``` with the preferred index prefix. The format of the INDEX_VALUE string can also be modified, please check the filebeat documentation for more info.  Please let the project know if any addtional options need to be added to the filebeat-ds.yml.
-```
 ---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
@@ -63,4 +46,3 @@ spec:
         - name: varlibdockercontainers
           hostPath:
             path: /var/lib/docker/containers
-```
