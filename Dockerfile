@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-ENV FILEBEAT_VERSION 6.0.0
+ENV FILEBEAT_VERSION 6.1.1
 ENV FILEBEAT_BASE_URL https://artifacts.elastic.co/downloads/beats/filebeat/
 
 RUN \
