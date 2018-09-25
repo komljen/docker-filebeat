@@ -14,7 +14,6 @@ kubectl apply -f filebeat-ds.yml --namespace=default
 ## Sample filebeat-ds.yml
 Please replace ```HOSTNAME:PORT``` with the desired hostname/port number and ```INDEX_VALUE``` with the preferred index prefix. The format of the INDEX_VALUE string can also be modified, please check the filebeat documentation for more info.  Please let the project know if any addtional options need to be added to the filebeat-ds.yml.
 ```
----
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -43,6 +42,8 @@ spec:
             - name: INDEX_PREFIX
               value: "INDEX_VALUE-%{[@metadata]}-%{+YYYY.MM.dd}"
           volumeMounts:
+            - name: config
+              mountPath: /etc/filebeat
             - name: varlog
               mountPath: /var/log/containers
             - name: varlogpods
@@ -53,6 +54,12 @@ spec:
               readOnly: true
       terminationGracePeriodSeconds: 30
       volumes:
+      - name: config
+        configMap:
+          name: filebeat-config
+          items:
+          - key: filebeat.yml
+            path: filebeat.yml
         - name: varlog
           hostPath:
             path: /var/log/containers
